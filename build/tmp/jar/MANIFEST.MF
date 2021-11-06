@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: /libs/bott-1.0-SNAPSHOT.jar
+Main-Class: mainbot
+

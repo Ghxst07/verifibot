@@ -15,7 +15,7 @@ public class mainbot {
     public static void main(String[]args) throws Exception{
 
 
-        JDA jda= JDABuilder.createDefault("ODUxMzg3OTI3NDgwODkzNDQw.YL3iyw.VLUmKR-nYqcbgE4RgflCs2ragcc").build();
+        JDA jda= JDABuilder.createDefault(System.getenv().get("TOKEN")).build();
         jda.addEventListener(new PingPong());
         jda.addEventListener(new Replies());
         jda.addEventListener(new Commands());

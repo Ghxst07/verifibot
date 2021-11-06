@@ -1,9 +1,13 @@
 plugins {
     id 'java'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
 }
 
 group 'com.ghxst'
 version '1.0-SNAPSHOT'
+test {
+    useJUnitPlatform()
+}
 
 dependencies {
     //Change 'implementation' to 'compile' in old Gradle versions
@@ -20,7 +24,11 @@ repositories {
     }
 }
 
-
-test {
-    useJUnitPlatform()
+task stage(dependsOn: ['build','shadowJar', 'clean', 'test'])
+build.mustRunAfter clean
+build.mustRunAfter test
+jar {
+    manifest{
+        attributes 'Class-Path': '/libs/bott-1.0-SNAPSHOT.jar', 'Main-Class': 'mainbot'
+    }
 }
